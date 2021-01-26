@@ -84,14 +84,40 @@
 
     // :: 3.0 STICKY HEADER ACTIVE CODE
     $window.on('scroll', function () {
-        if ($(window).scrollTop() > 100) {
-            $('.navbar').addClass('navbar-sticky');
-            $('.navbar .navbar-nav.action .btn').addClass('btn-bordered');
-            $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered-black');
-        } else {
-            $('.navbar').removeClass('navbar-sticky');
-            $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered');
-            $('.navbar .navbar-nav.action .btn').addClass('btn-bordered-black');
+        const arr = window.location.href.split("/");
+        // console.log(arr[arr.length - 1])
+        if (arr[arr.length - 1] === 'index-4.html') {
+            if ($(window).scrollTop() > 100) {
+                $('.navbar').addClass('navbar-sticky');
+                $('.navbar .navbar-nav.action .btn').addClass('btn-bordered');
+                $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered-black');
+            } else {
+                $('.navbar').removeClass('navbar-sticky');
+                $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered');
+                $('.navbar .navbar-nav.action .btn').addClass('btn-bordered-black');
+            }
+        } 
+        // else if(arr[arr.length - 1] === 'contact.html') {
+        //     if ($(window).scrollTop() > 100) {
+        //         $('.navbar').addClass('navbar-sticky');
+        //         $('.navbar .navbar-nav.action .btn').addClass('btn-bordered');
+        //         $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered-white');
+        //     } else {
+        //         $('.navbar').removeClass('navbar-sticky');
+        //         $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered');
+        //         $('.navbar .navbar-nav.action .btn').addClass('btn-bordered-white');
+        //     }
+        // } 
+        else  {
+            if ($(window).scrollTop() > 100) {
+                $('.navbar').addClass('navbar-sticky');
+                $('.navbar .navbar-nav.action .btn').addClass('btn-bordered');
+                $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered-white');
+            } else {
+                $('.navbar').removeClass('navbar-sticky');
+                $('.navbar .navbar-nav.action .btn').removeClass('btn-bordered');
+                $('.navbar .navbar-nav.action .btn').addClass('btn-bordered-white');
+            }
         }
     });
 
@@ -162,7 +188,7 @@
         $('.profile-circle-wrapper').addClass('circle-animation');
         $('.profile-icon').fadeIn();
     });
-    
+
     // :: 13.0 REVIEWS ACTIVE CODE
     $('.client-reviews.owl-carousel').owlCarousel({
         loop: true,
@@ -192,24 +218,24 @@
     });
 
     // :: 14.0 PORTFOLIO ACTIVE CODE
-    $('.portfolio-area').each(function(index) {
+    $('.portfolio-area').each(function (index) {
 
         var count = index + 1;
 
-        $(this).find('.portfolio-items').removeClass('portfolio-items').addClass('portfolio-items-'+count);
-        $(this).find('.portfolio-item').removeClass('portfolio-item').addClass('portfolio-item-'+count);
-        $(this).find('.portfolio-btn').removeClass('portfolio-btn').addClass('portfolio-btn-'+count);
-        
+        $(this).find('.portfolio-items').removeClass('portfolio-items').addClass('portfolio-items-' + count);
+        $(this).find('.portfolio-item').removeClass('portfolio-item').addClass('portfolio-item-' + count);
+        $(this).find('.portfolio-btn').removeClass('portfolio-btn').addClass('portfolio-btn-' + count);
+
         var Shuffle = window.Shuffle;
-        var Filter  = new Shuffle(document.querySelector('.portfolio-items-'+count), {
-            itemSelector: '.portfolio-item-'+count,
+        var Filter = new Shuffle(document.querySelector('.portfolio-items-' + count), {
+            itemSelector: '.portfolio-item-' + count,
             buffer: 1,
         })
-    
-        $('.portfolio-btn-'+count).on('change', function (e) {
-    
+
+        $('.portfolio-btn-' + count).on('change', function (e) {
+
             var input = e.currentTarget;
-            
+
             if (input.checked) {
                 Filter.filter(input.value);
             }
@@ -229,10 +255,10 @@
         var formData = $(form).serialize();
         // Submit the form using AJAX.
         $.ajax({
-                type: 'POST',
-                url: $(form).attr('action'),
-                data: formData
-            })
+            type: 'POST',
+            url: $(form).attr('action'),
+            data: formData
+        })
             .done(function (response) {
                 // Make sure that the formMessages div has the 'success' class.
                 $(formMessages).removeClass('error');
