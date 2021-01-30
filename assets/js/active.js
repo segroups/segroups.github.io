@@ -86,7 +86,7 @@
     $window.on('scroll', function () {
         const arr = window.location.href.split("/");
         // console.log(arr[arr.length - 1])
-        if (arr[arr.length - 1] === 'index-4.html') {
+        if (arr[arr.length - 1] === 'index.html') {
             if ($(window).scrollTop() > 100) {
                 $('.navbar').addClass('navbar-sticky');
                 $('.navbar .navbar-nav.action .btn').addClass('btn-bordered');
